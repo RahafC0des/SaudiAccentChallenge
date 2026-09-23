@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> 🇸🇦خبرتك باللهجة السعودية</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="scenery" aria-hidden="true">
+    <!-- gold band with a scalloped bottom edge, like the National Day site's footer -->
+    <div class="gold-fill"></div>
+    <div class="gold-scallop"></div>
+    <div class="diamond-row">
+      <span class="diamond"></span><span class="diamond"></span><span class="diamond"></span>
+      <span class="diamond"></span><span class="diamond"></span><span class="diamond"></span>
+      <span class="diamond"></span>
+    </div>
+
+    <!--stars-->
+    <span class="spark spark-1">✦</span>
+    <span class="spark spark-2">✦</span>
+    <span class="spark spark-3">✧</span>
+    <span class="spark spark-4">✦</span>
+    <span class="spark spark-5">✧</span>
+  </div>
+
+  <main class="phone">
+    <!--Sadu-->
+    <div class="sadu" aria-hidden="true"></div>
+
+    <!-- ============ SCREEN 1: START ============ -->
+    <section id="screen-start" class="screen active">
+      <h1 class="title-ar" lang="ar" dir="rtl">تحدي اللهجة السعودية</h1>
+
+      <p class="intro" lang="ar" dir="rtl">
+        يوم وطني سعيد! 
+      </p>
+
+      <div class="badges">
+        <span class="badge" lang="ar" dir="rtl">  خمسة أسئلة تحدى فيها خبرتك بلهجتنا</span>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary">بدء التحدي</button>
+    </section>
+
+    <!-- ============ SCREEN 2: QUIZ ============ -->
+    <section id="screen-quiz" class="screen">
+      <div class="topbar">
+        <span id="q-counter" class="counter">1 of 5</span>
+        <span id="q-score" class="score-pill is-hidden" dir="rtl">0 صح</span>
+      </div>
+
+      <div class="progress" aria-hidden="true">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <div class="word-block">
+        <h2 id="q-word" class="word" lang="ar" dir="rtl"></h2>
+        <p class="ask" lang="ar" dir="rtl">وش معناها؟</p>
+      </div>
+
+  
+      <ul id="options" class="options" dir="rtl"></ul>
+
+
+      <button id="btn-next" class="btn btn-primary is-hidden">الكلمة التالية</button>
+    </section>
+
+    <!-- ============ SCREEN 3: RESULT ============ -->
+    <section id="screen-result" class="screen">
+      <div id="ring" class="ring">
+        <div class="ring-inner">
+          <span id="ring-emoji" class="ring-emoji"></span>
+          <span id="ring-percent" class="ring-percent"></span>
+          <span id="ring-score" class="ring-score"></span>
+        </div>
+      </div>
+
+      <h2 id="result-title" class="result-title"></h2>
+      <p id="result-text" class="intro"></p>
+
+      <button id="btn-restart" class="btn btn-primary">العب مرة أخرى</button>
+    </section>
+  </main>
+
+  <!-- watermark -->
+  <footer class="credits">
+    <p class="watermark" lang="ar" dir="rtl">شدن الشمري ورهف الضمادي</p>
+    <p class="watermark-subtitle" lang="ar" dir="rtl">فاب لاب حائل</p>
+  </footer>
+
+  <script src="saudiwords.js"></script>
+  <script src="page.js"></script>
+</body>
+</html>

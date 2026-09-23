@@ -1,0 +1,373 @@
+:root {
+  --palm:      #0E5A40;   /* main green (Saudi flag inspired) */
+  --palm-deep: #0A4632;   /* darker green, used in the background */
+  --palm-soft: #DCEEE3;   /* light green for backgrounds */
+  --palm-light:#2E8F63;   /* solid lighter green, used for the badge */
+  --mist:      #F3EDDD;   /* warm sand, used behind small-screen edge-to-edge card */
+  --paper:     #F9F1DD;   /* the "phone" surface — warm paper white, not stark white */
+  --saffron:   #FFC43D;   /* warm gold accent */
+  --gold-deep: #E2A400;
+  --ink:       #17261F;   /* main text */
+  --ink-soft:  #5C6F64;   /* secondary text */
+  --line:      #E9E2CC;   /* thin separators */
+  --coral:     #E85D4F;   /* wrong answers */
+  --coral-soft:#FCE4E0;
+
+  /* page background theme (inspired by the National Day site's footer) */
+  --teal-deep: #0B2F2B;
+  --teal-mid:  #123F3A;
+  --gold-1:    #EAD293;
+  --gold-2:    #C79A3E;
+  --gold-3:    #8B5E2B;
+}
+/* ---------- SCENERY ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scenery {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* gold band across the top of the page, like the National Day site's footer banner */
+.gold-fill {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 210px;
+  background:
+    linear-gradient(120deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 100%);
+}
+
+/* the scalloped (zigzag) edge where the gold band meets the teal */
+.gold-scallop {
+  position: absolute;
+  top: 210px; left: 0; right: 0;
+  height: 60px;
+  background-color: var(--gold-2);
+  background-image:
+    linear-gradient(135deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(225deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(315deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(45deg,  var(--teal-deep) 25%, transparent 25%);
+  background-size: 60px 60px;
+  background-position: -30px 0, -30px 0, 0 0, 0 0;
+}
+
+/* a row of little gold diamonds sitting just below the scallop */
+.diamond-row {
+  position: absolute;
+  top: 300px; left: 0; right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 8%;
+}
+.diamond {
+  width: 12px;
+  height: 12px;
+  background: var(--gold-2);
+  opacity: 0.8;
+  transform: rotate(45deg);
+}
+
+/* little gold sparkle stars */
+.spark {
+  position: absolute;
+  color: var(--gold-1);
+  text-shadow: 0 0 10px rgba(234, 210, 147, 0.6);
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+.spark-1 { top: 46%; left: 12%; font-size: 20px; animation-delay: 0s; }
+.spark-2 { top: 58%; right: 10%; font-size: 26px; animation-delay: 0.4s; }
+.spark-3 { top: 74%; left: 8%;  font-size: 16px; animation-delay: 0.9s; }
+.spark-4 { bottom: 10%; right: 14%; font-size: 22px; animation-delay: 1.3s; }
+.spark-5 { top: 66%; right: 26%; font-size: 14px; animation-delay: 1.7s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.9); }
+  50%      { opacity: 0.9;  transform: scale(1.05); }
+}
+
+/* ---------- PAGE ---------- */
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, var(--teal-mid) 0%, var(--teal-deep) 60%);
+  color: var(--ink);
+  font-family: "Readex Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*container */
+.phone {
+  width: 100%;
+  max-width: 420px;
+  min-height: 600px;
+  background: var(--paper);
+  border: 4px solid var(--palm);
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 34px 64px -20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  padding: 28px 26px 32px;
+}
+.screen.active { display: flex; animation: screen-in 0.35s ease; }
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- 4. SADU BAND (the woven-pattern strip at the top) ---------- */
+.sadu {
+  height: 64px;
+  flex-shrink: 0;
+  background-color: var(--saffron);
+  background-image:
+    linear-gradient(135deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(225deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(315deg, var(--teal-deep) 25%, transparent 25%),
+    linear-gradient(45deg,  var(--teal-deep) 25%, transparent 25%);
+  background-size: 64px 64px;
+  background-position: -32px 0, -32px 0, 0 0, 0 0;
+}
+
+/* ----------START SCREEN ---------- */
+#screen-start { align-items: center; text-align: center; justify-content: flex-start; }
+
+.title-ar {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--palm);
+  margin-top: 24px;
+}
+
+.intro {
+  max-width: 300px;
+  margin: 18px auto 0;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--palm-light);
+  color: #fff;
+}
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 17px;
+  border: 0;
+  border-radius: 20px;
+  padding: 16px 28px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn:hover  { filter: brightness(1.06); }
+.btn-primary {
+  background: var(--palm);
+  color: #fff;
+  box-shadow: 0 10px 18px -10px rgba(14, 90, 64, 0.8);
+}
+
+#btn-start {
+  padding: 20px 28px;
+  font-size: 19px;
+}
+
+:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+
+/* ---------- QUIZ SCREEN ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.score-pill {
+  background: var(--saffron);
+  color: #4A3500;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+
+.progress {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  margin: 14px 0 26px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--palm);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.word-block { text-align: center; margin-bottom: 22px; }
+.word {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 14px;
+  color: var(--ink);
+}
+.ask { font-size: 14px; font-weight: 500; color: var(--palm); margin-top: 14px; }
+
+/* ---------- 7. ANSWER ROWS (styled like an iPhone settings list) ---------- */
+.options {
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.options li + li { border-top: 1px solid var(--line); }
+
+.option {
+  font: inherit;
+  font-size: 16px;
+  text-align: start;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+.option:hover:not(:disabled) { background: var(--palm-soft); }
+.option:active:not(:disabled) { transform: scale(0.985); }
+.option:disabled { cursor: default; }
+
+.option-key {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--palm-soft);
+  color: var(--palm);
+}
+.option-label { flex: 1; }
+
+.option.correct { background: #D9F2E2; font-weight: 600; }
+.option.correct .option-key { background: var(--palm); color: #fff; }
+
+.option.wrong { background: var(--coral-soft); }
+.option.wrong .option-key { background: var(--coral); color: #fff; }
+
+.option.dim { opacity: 0.45; }
+
+#btn-next { margin-top: 18px; }
+/* keeps its space while hidden, so nothing shifts when it shows up */
+.is-hidden { visibility: hidden; }
+
+/* ----------  RESULTS ---------- */
+#screen-result { align-items: center; text-align: center; }
+
+/* This lets the ring fill up smoothly. */
+@property --pct { syntax: "<number>"; inherits: false; initial-value: 0; }
+
+.ring {
+  --pct: 0;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  margin-top: 14px;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--saffron) calc(var(--pct) * 1%), var(--line) 0);
+  transition: --pct 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ring-inner {
+  width: 156px;
+  height: 156px;
+  border-radius: 50%;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ring-emoji { font-size: 42px; line-height: 1.1; }
+.ring-percent { font-size: 26px; font-weight: 700; color: var(--ink); margin-top: 2px; }
+.ring-score { font-size: 14px; font-weight: 500; color: var(--ink-soft); margin-top: 1px; }
+
+.result-title { font-size: 30px; font-weight: 700; margin-top: 22px; color: var(--palm); }
+
+#btn-restart { margin-top: 20px; }
+
+/* ---------- WATERMARK ---------- */
+/* sits under the card in the normal flow, so it never covers the buttons */
+.credits {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: 14px 0 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: var(--gold-1);
+}
+.watermark { font-size: 12px; opacity: 0.7; }
+.watermark-subtitle { font-size: 11px; opacity: 0.5; }
+
+/* ----------SMALL SCREENS ---------- */
+@media (max-width: 460px) {
+  body { padding: 0; justify-content: flex-start; }
+  .phone { flex: 1; min-height: 0; border-radius: 0; border-width: 3px; box-shadow: none; }
+  .credits { padding: 10px 0 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
