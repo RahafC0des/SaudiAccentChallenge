@@ -364,9 +364,9 @@ body {
 
 /* ----------SMALL SCREENS ---------- */
 @media (max-width: 460px) {
-  body { padding: 0; justify-content: flex-start; }
-  .phone { flex: 1; min-height: 0; border-radius: 0; border-width: 3px; box-shadow: none; }
-  .credits { padding: 10px 0 12px; }
+  body { padding: 20px 14px 16px; }
+  .phone { min-height: 560px; border-radius: 32px; }
+  .title-ar { font-size: 42px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
