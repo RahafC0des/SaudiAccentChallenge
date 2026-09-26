@@ -6,9 +6,11 @@ const OPTIONS_PER_QUESTION = 4;   // answers shown per question
 
 
 const RATINGS = [
-  { min: 100, title: "", text: "" }, // perfect score (5/5)
-  { min: 50, title: "", text: "" }, // half right or better
-  { min: 0, title: "", text: "" }  // needs another round
+  { min: 100, title: "بيض الله وجهك",       text: "خبير لهجات سعودية" },
+  { min: 70,  title: "كفو عليك",            text: "فاهم سوالف الديرة ولهجاتها" },
+  { min: 50,  title: "علومك زينة",          text: "واضح عندك معرفة باللهجات السعودية" },
+  { min: 30,  title: "عندك فنجال من المعرفة", text: "وننتظر تكمل الدلة" },
+  { min: 0,   title: "بداية طيبة",          text: "بس اللهجات يبيلها سوالف أكثر" }
 ];
 
 

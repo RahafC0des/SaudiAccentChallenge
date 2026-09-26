@@ -343,9 +343,10 @@ body {
 .ring-percent { font-size: 26px; font-weight: 700; color: var(--ink); margin-top: 2px; }
 .ring-score { font-size: 14px; font-weight: 500; color: var(--ink-soft); margin-top: 1px; }
 
-.result-title { font-size: 30px; font-weight: 700; margin-top: 22px; color: var(--palm); }
+.result-title { font-size: 30px; font-weight: 700; line-height: 1.4; margin-top: 22px; color: var(--palm); }
+#result-text  { font-size: 30px; font-weight: 700; line-height: 1.4; max-width: none; margin: 4px 0 0; color: var(--palm); }
 
-#btn-restart { margin-top: 20px; }
+#btn-restart { margin-top: auto; padding: 20px 28px; font-size: 19px; }
 
 /* ---------- WATERMARK ---------- */
 /* sits under the card in the normal flow, so it never covers the buttons */
